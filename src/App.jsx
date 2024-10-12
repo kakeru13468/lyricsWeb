@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import Navbar from './Components/Navbar/Navbar'
-
+import Footer from './Components/Footer/Footer'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <Navbar/>
-        
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+        </main>
+        <Footer />
       </div>
     </>
   )
