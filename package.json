@@ -10,10 +10,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@applemusic-like-lyrics/react": "^0.1.5",
+    "@pixi/app": "^7.4.2",
+    "@pixi/core": "^7.4.2",
+    "@pixi/display": "^7.4.2",
+    "@pixi/filter-blur": "^7.4.2",
+    "@pixi/filter-bulge-pinch": "^5.1.1",
+    "@pixi/filter-color-matrix": "^7.4.2",
+    "@pixi/sprite": "^7.4.2",
     "framer-motion": "^11.11.8",
+    "jss": "^10.10.0",
+    "jss-preset-default": "^10.10.0",
     "lucide-react": "^0.452.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-player": "^2.16.0",
     "react-router-dom": "^6.27.0"
   },
   "devDependencies": {
