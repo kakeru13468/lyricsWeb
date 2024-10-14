@@ -24,7 +24,7 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
     };
 
     return (
-        <div className="flex flex-col md:flex-row gap-8 p-8 mt-16">
+        <div className="flex flex-col md:flex-row gap-8 p-8 mt-2">
             <div className="w-full h-128 bg-gray-100 p-6 rounded-lg">
                 <ReactPlayer
                     url={videoUrl}

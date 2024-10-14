@@ -54,10 +54,12 @@ const LyricsStudy = () => {
         { "time": "00:04:05,400", "text": "人とく光る一瞬のめき" },
         { "time": "00:04:28,720", "text": "[音楽]" }
     ]
-    
+    const songName = "*Luna"
+    const songAuthor = "アトラクトライト"
+
     return (
         <>
-        <SongInfo />
+        <SongInfo songName={songName} songAuthor={songAuthor}/>
         <LyricsPlayer videoUrl={videoURL} lyricsData={lyricsData} />
         </>
     );
