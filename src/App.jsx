@@ -4,25 +4,24 @@ import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import Home from './Pages/Home';
 import LyricsStudy from './Pages/LyricsStudy';
-// import Favorites from './Pages/Favorites';
-// import Categories from './Pages/Categories';
-// import Login from './Pages/Login';
-// import Register from './Pages/Register';
+import Categories from './Pages/Categories';
+
 
 function App() {
   return (
-    <Router>
-      <div className="App flex flex-col min-h-screen">
-        <Navbar />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/LyricsStudy" element={<LyricsStudy />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+      <Router>
+        <div className="App flex flex-col min-h-screen">
+          <Navbar />
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/LyricsStudy" element={<LyricsStudy />} />
+              <Route path="/Categories" element={<Categories />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
   );
 }
 

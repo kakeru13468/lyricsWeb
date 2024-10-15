@@ -14,10 +14,10 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-4xl font-extrabold mb-4 md:text-6xl"
           >
-            歡迎來到我的網站
+            為什麼要演奏春日影
           </motion.h1>
           <p className="text-lg md:text-xl mb-6">
-            在這裡探索每日精選推薦，收藏並分享更多精彩內容。
+            我不知道這裡要打什麼
           </p>
           <motion.a
             href="#daily-recommendations"
