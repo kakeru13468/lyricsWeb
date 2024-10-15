@@ -18,6 +18,7 @@
     "@pixi/filter-bulge-pinch": "^5.1.1",
     "@pixi/filter-color-matrix": "^7.4.2",
     "@pixi/sprite": "^7.4.2",
+    "@reduxjs/toolkit": "^2.3.0",
     "framer-motion": "^11.11.8",
     "jss": "^10.10.0",
     "jss-preset-default": "^10.10.0",

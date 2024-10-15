@@ -5,6 +5,7 @@ import Footer from './Components/Footer/Footer';
 import Home from './Pages/Home';
 import LyricsStudy from './Pages/LyricsStudy';
 import Categories from './Pages/Categories';
+import SongList from './Pages/SongList';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/LyricsStudy" element={<LyricsStudy />} />
               <Route path="/Categories" element={<Categories />} />
+              <Route path="/SongList" element={<SongList />} />
             </Routes>
           </main>
           <Footer />

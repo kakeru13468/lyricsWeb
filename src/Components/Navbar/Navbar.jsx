@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 
@@ -9,6 +10,7 @@ const Navbar = () => {
   const [songData, setSongData] = useState(null);
   const searchBoxRef = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleSearchBox = () => setIsSearchVisible((prev) => !prev);
 
@@ -33,6 +35,7 @@ const Navbar = () => {
       if (response.ok) {
         const data = await response.json();
         setSongData(data);
+        navigate('/LyricsStudy', { state: { songData: data } });
       } else {
         setSongData(null);
         console.error('找不到該歌曲');
@@ -125,3 +128,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
