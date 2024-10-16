@@ -57,11 +57,16 @@ const Navbar = () => {
           <div className="flex items-center justify-between">
             <div className="flex shrink-0">
               <Link to="/">
+                <img 
+                src="./assets/KX.png" 
+                alt="Home Icon" 
+                className="w-8 h-8 object-contain" 
+                />
                 <p className="sr-only">Website Title</p>
               </Link>
             </div>
 
-            <div className="flex flex-grow items-center justify-between">
+            <div className="flex flex-grow items-center justify-end gap-5">
               <div className="flex items-center justify-center gap-5">
                 <Link
                   to="/"
@@ -108,8 +113,13 @@ const Navbar = () => {
                 >
                   分類
                 </Link>
+                <Link
+                to="/Wishlist"
+                className="inline-block select-none rounded-lg px-2 py-1 text-sm font-medium transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
+              >
+                許願
+              </Link>
               </div>
-
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import LyricsStudy from './Pages/LyricsStudy';
 import Categories from './Pages/Categories';
 import SongList from './Pages/SongList';
+import Wishlist from './Pages/Wishlist';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
               <Route path="/LyricsStudy" element={<LyricsStudy />} />
               <Route path="/Categories" element={<Categories />} />
               <Route path="/SongList" element={<SongList />} />
+              <Route path="/Wishlist" element={<Wishlist />} />
             </Routes>
           </main>
           <Footer />
