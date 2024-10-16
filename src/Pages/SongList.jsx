@@ -1,23 +1,43 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import ReactPlayer from 'react-player';
+import { motion } from 'framer-motion'; 
 
 const SongList = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const { songData } = location.state || {}; 
+    console.log('Received songData:', songData); 
 
     if (!songData) {
         return <p>找不到歌曲資料</p>;
     }
 
+    const handleSongClick = (song) => {
+        navigate('/LyricsStudy', { state: { songData: song } });
+    };
+
     return (
         <div className="flex flex-wrap justify-center p-8 mt-16">
             {songData.map((song) => (
-                <div key={song.id} className="m-4 p-4 border rounded-lg shadow-md max-w-xs">
+                <motion.div 
+                    key={song.id}
+                    className="m-4 p-4 border rounded-lg shadow-md max-w-xs cursor-pointer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => handleSongClick(song)}
+                >
                     <h2 className="text-xl font-bold">{song.title}</h2>
-                    <p className="text-gray-700">Artist: {song.artist}</p>
-                    <p className="text-gray-600">Style: {song.songstyle}</p>
-                    <a href={song.url} className="text-blue-500 hover:underline">Listen</a>
-                </div>
+                    <p className="text-gray-700">作者: {song.artist}</p>
+                    <ReactPlayer 
+                        url={song.url} 
+                        className="react-player" 
+                        controls={true} 
+                        width='100%' 
+                        height='200px' 
+                        onClick={(e) => e.stopPropagation()} // 防止點擊播放器時觸發導航
+                    />
+                </motion.div>
             ))}
         </div>
     );

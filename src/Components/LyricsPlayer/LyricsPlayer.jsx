@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 
+
 const convertTimeToSeconds = (timeString) => {
     const parts = timeString.split(/[:,]/);
     return parseInt(parts[0]) * 3600 + parseInt(parts[1]) * 60 + parseInt(parts[2]);
 };
 
 const LyricsPlayer = ({ videoUrl, lyricsData }) => {
+    
+    if (!Array.isArray(lyricsData)) {
+        return <div>Loading...</div>; 
+    }
     const [currentIndex, setCurrentIndex] = useState(-1);
 
     const handleProgress = (progress) => {

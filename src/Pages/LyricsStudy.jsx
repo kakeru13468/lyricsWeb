@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 const LyricsStudy = () => {
     const location = useLocation();
     const { songData } = location.state || {}; 
+    console.log('LyricsStudy songData:', songData);
     if (!songData) {
         return <p>找不到歌曲資料</p>;
     }
@@ -12,7 +13,7 @@ const LyricsStudy = () => {
     const songAuthor = songData.artist;
     const videoURL = songData.url;
     const lyricsData = songData.lyrics;
-    
+
     return (
         <>
         <SongInfo songName={songName} songAuthor={songAuthor}/>
