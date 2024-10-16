@@ -58,9 +58,9 @@ const Navbar = () => {
             <div className="flex shrink-0">
               <Link to="/">
                 <img 
-                src="./assets/KX.png" 
+                src="./assets/KX-foto.png" 
                 alt="Home Icon" 
-                className="w-8 h-8 object-contain" 
+                className="w-32 h-8 object-contain" 
                 />
                 <p className="sr-only">Website Title</p>
               </Link>

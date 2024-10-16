@@ -9,7 +9,7 @@ const Footer = () => {
           <div>
             <h3 className="text-gray-900 text-lg font-semibold mb-2">聯絡我們</h3>
             <p className="text-sm text-gray-700 mb-3">有任何問題嗎？請發送電子郵件至：</p>
-            <a href="mailto:support@example.com" className="text-blue-600 hover:underline">auchergod@gmail.com</a>
+            <a href="mailto:support@example.com" className="text-blue-600 hover:underline">kxjapan30245@gmail.com</a>
           </div>
 
           <div>
