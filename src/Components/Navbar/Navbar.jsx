@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import Error from '../Error/Error'; // 引入 Error 組件
+import Error from '../Error/Error'; 
 
 const Navbar = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [songData, setSongData] = useState(null);
-  const [showError, setShowError] = useState(false); // 控制 Error 彈窗
+  const [showError, setShowError] = useState(false); 
   const searchBoxRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -110,20 +110,6 @@ const Navbar = () => {
                 </Link>
               </div>
 
-              <div className="flex items-center gap-3">
-                <Link
-                  to="/Register"
-                  className="hidden select-none items-center justify-center rounded-xl bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 transition-all duration-150 hover:bg-gray-50 sm:inline-flex"
-                >
-                  註冊
-                </Link>
-                <Link
-                  to="/login"
-                  className="inline-flex select-none items-center justify-center rounded-xl bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                >
-                  登入
-                </Link>
-              </div>
             </div>
           </div>
         </div>
