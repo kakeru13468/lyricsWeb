@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom'; 
 
 const Categories = () => {
+    useEffect(() =>{
+        window.scrollTo(0,0);
+    },[])
   const [songData, setSongData] = useState(null); 
   const navigate = useNavigate(); 
 

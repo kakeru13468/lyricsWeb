@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 
 const Wishlist = () => {
+    useEffect(() => {
+      window.scrollTo(0,0);
+    }, []);
   const [formData, setFormData] = useState({
     songTitle: '',
     authorName: '',

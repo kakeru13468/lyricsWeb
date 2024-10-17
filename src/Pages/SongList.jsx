@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import { motion } from 'framer-motion'; 
 
 const SongList = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const location = useLocation();
     const navigate = useNavigate();
     const { songData } = location.state || {}; 

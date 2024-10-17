@@ -8,6 +8,7 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchSongs = async () => {
       try {
         const response = await axios.get("http://localhost:5000/songs");

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Error from '../Error/Error';
 
 const Navbar = () => {
-  const [isNavbarOpen, setIsNavbarOpen] = useState(true); 
+  const [isNavbarOpen, setIsNavbarOpen] = useState(true);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [songData, setSongData] = useState(null);
@@ -33,6 +33,20 @@ const Navbar = () => {
   }, []);
 
   const toggleSearchBox = () => setIsSearchVisible((prev) => !prev);
+
+  const handleClickOutside = (event) => {
+    if (
+      searchBoxRef.current &&
+      !searchBoxRef.current.contains(event.target)
+    ) {
+      setIsSearchVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const isActive = (path) => location.pathname === path;
 
