@@ -4,40 +4,79 @@ import axios from "axios";
 import ReactPlayer from "react-player";
 
 const Home = () => {
-  const [songs, setSongs] = useState([]); 
-  const [error, setError] = useState(null); 
+  const [songs, setSongs] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchSongs = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/songs"); 
-        setSongs(response.data); 
+        const response = await axios.get("http://localhost:5000/songs");
+        setSongs(response.data);
       } catch (error) {
         console.error("Error fetching songs:", error);
         setError("無法載入歌曲，請稍後再試。");
       }
     };
 
-    fetchSongs(); 
+    fetchSongs();
   }, []);
 
   const scrollToRecommendations = () => {
-    window.scrollTo({ top: 355, behavior: "smooth" });
+    window.scrollTo({ top: 650, behavior: "smooth" });
   };
 
   return (
     <main className="flex-grow">
       <section className="relative bg-blue-600 text-white py-20 px-6 md:py-32">
         <div className="max-w-screen-md mx-auto text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: -50 }}
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl font-extrabold mb-4 md:text-6xl"
+            transition={{ duration: 1 }}
+            className="px-6 py-12 text-center bg-gradient-to-b from-blue-100 to-white rounded-lg shadow-lg md:py-16 md:px-12"
           >
-            なんで春日影やったの
-          </motion.h1>
-          <p className="text-lg md:text-xl mb-6">なんで春日影やったの</p>
+            <h1 className="text-3xl font-extrabold mb-6 text-gray-800 md:text-5xl">
+               歡迎來到 KX Lyrics
+            </h1>
+            <div className="text-left md:max-w-2xl md:mx-auto">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="mb-6"
+              >
+                <h2 className="text-2xl font-semibold mb-2 text-blue-600">🔍 搜尋功能：</h2>
+                <p className="text-gray-700">
+                  我們的搜尋系統目前僅支援根據**歌曲名稱**進行查找。未來將會持續更新搜尋引擎！
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="mb-6"
+              >
+                <h2 className="text-2xl font-semibold mb-2 text-green-600">💫 許願表單：</h2>
+                <p className="text-gray-700">
+                  找不到你喜歡的歌曲嗎？在許願表單留下你的心願，我們將努力幫助你實現它！
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                <h2 className="text-2xl font-semibold mb-2 text-yellow-600">☕ 支持我們：</h2>
+                <p className="text-gray-700">
+                  喜歡我們的服務嗎？點擊下方按鈕**贊助我們喝杯咖啡**，你的支持是我們持續前進的動力！
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          <p className="text-lg md:text-xl mb-6"></p>
           <motion.button
             onClick={scrollToRecommendations}
             initial={{ opacity: 0 }}
@@ -63,11 +102,11 @@ const Home = () => {
                 <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
                   <h3 className="text-xl font-semibold mb-4">{song.title}</h3>
                   <p className="text-gray-700">{song.artist}</p>
-                  <ReactPlayer 
-                    url={song.url} 
-                    width="100%" 
-                    height="250px" 
-                    controls 
+                  <ReactPlayer
+                    url={song.url}
+                    width="100%"
+                    height="250px"
+                    controls
                   />
                 </div>
               ))}

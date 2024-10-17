@@ -35,7 +35,7 @@ const SongList = () => {
                         controls={true} 
                         width='100%' 
                         height='200px' 
-                        onClick={(e) => e.stopPropagation()} // 防止點擊播放器時觸發導航
+                        onClick={(e) => e.stopPropagation()} 
                     />
                 </motion.div>
             ))}
