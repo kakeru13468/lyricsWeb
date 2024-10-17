@@ -13,7 +13,7 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
   }
 
   const [currentIndex, setCurrentIndex] = useState(-1);
-  const [playing, setPlaying] = useState(false); // 新增播放狀態
+  const [playing, setPlaying] = useState(false); 
   const playerRef = useRef(null); 
 
   const handleProgress = (progress) => {
