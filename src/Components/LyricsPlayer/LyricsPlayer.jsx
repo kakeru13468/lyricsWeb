@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import { motion } from 'framer-motion';
 
@@ -13,6 +13,8 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
   }
 
   const [currentIndex, setCurrentIndex] = useState(-1);
+  const [playing, setPlaying] = useState(false); // 新增播放狀態
+  const playerRef = useRef(null); 
 
   const handleProgress = (progress) => {
     const currentTime = progress.playedSeconds;
@@ -28,9 +30,15 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
     }
   };
 
+  const handleLyricsClick = (time) => {
+    const seconds = convertTimeToSeconds(time);
+    playerRef.current.seekTo(seconds);
+    setPlaying(true); 
+  };
+
   return (
     <motion.div
-      className="flex flex-col md:flex-row gap-8 p-8 "
+      className="flex flex-col md:flex-row gap-8 p-8"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, ease: 'easeInOut' }}
@@ -42,14 +50,15 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
         transition={{ duration: 0.6, ease: 'easeInOut' }}
       >
         <ReactPlayer
+          ref={playerRef} 
           url={videoUrl}
           controls={true}
           width="100%"
           height="100%"
+          playing={playing} 
           onProgress={handleProgress}
         />
       </motion.div>
-
 
       <motion.div
         className="w-full h-128 text-center bg-gray-100 p-6 rounded-lg shadow-lg overflow-y-auto"
@@ -62,14 +71,15 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
           {lyricsData.map((line, index) => (
             <motion.div
               key={index}
-              className="p-4 rounded-lg bg-white shadow-md"
+              className="p-4 rounded-lg bg-white shadow-md cursor-pointer" 
               initial={{ scale: 1 }}
               animate={
                 index === currentIndex
-                  ? { scale: 1.1, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)' }
-                  : { scale: 1, boxShadow: 'none' }
+                  ? { scale: 1.06, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)' }
+                  : { scale: 1 }
               }
               transition={{ duration: 0.3 }}
+              onClick={() => handleLyricsClick(line.time)} 
             >
               <p
                 className={`text-xl font-medium transition-colors duration-300 ${
