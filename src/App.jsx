@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
-import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
 import Home from './Pages/Home';
 import LyricsStudy from './Pages/LyricsStudy';
 import Categories from './Pages/Categories';
