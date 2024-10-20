@@ -20,7 +20,7 @@ const Categories = () => {
 
   const handleCategoryClick = async (songStyle) => {
     try {
-      const response = await fetch(`http://localhost:5000/songs?songstyle=${encodeURIComponent(songStyle)}`);
+      const response = await fetch(`https://songdata.zeabur.app/songs?songstyle=${encodeURIComponent(songStyle)}`);
       if (response.ok) {
         const data = await response.json();
         setSongData(data); 
