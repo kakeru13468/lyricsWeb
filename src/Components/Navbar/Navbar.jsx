@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiHome, FiSearch, FiHeart, FiGrid } from 'react-icons/fi'; // 引入所需圖示
+import { FiHome, FiSearch, FiHeart, FiGrid } from 'react-icons/fi'; 
 import Error from '../Error/Error';
 
 const Navbar = () => {
@@ -98,22 +98,26 @@ const Navbar = () => {
             <div className="flex items-center gap-5">
               <Link
                 to="/"
-                className={`inline-block px-2 py-1 text-sm font-medium transition-all duration-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 ${
+                className={`hidden sm:inline-block px-2 py-1 text-sm font-medium transition-all duration-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 ${
                   isActive('/') ? 'bg-gray-100 text-gray-900' : 'text-gray-900'
-                } hidden sm:inline`}
+                }`}
               >
                 首頁
               </Link>
-              <FiHome className="block sm:hidden text-2xl" />
+              <Link to="/" className="block sm:hidden text-2xl">
+                <FiHome />
+              </Link>
 
               <div className="relative inline-block" ref={searchBoxRef}>
                 <button
                   onClick={toggleSearchBox}
-                  className="inline-block px-2 py-1 text-sm font-medium text-gray-900 rounded-lg hover:bg-gray-100 hover:text-gray-900 hidden sm:inline"
+                  className="hidden sm:inline-block px-2 py-1 text-sm font-medium text-gray-900 rounded-lg hover:bg-gray-100 hover:text-gray-900"
                 >
                   搜尋
                 </button>
-                <FiSearch className="block sm:hidden text-2xl" />
+                <Link to="#" onClick={toggleSearchBox} className="block sm:hidden text-2xl">
+                  <FiSearch />
+                </Link>
 
                 {isSearchVisible && (
                   <motion.div
@@ -141,21 +145,27 @@ const Navbar = () => {
 
               <Link
                 to="/Categories"
-                className={`inline-block px-2 py-1 text-sm font-medium transition-all duration-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 ${
+                className={`hidden sm:inline-block px-2 py-1 text-sm font-medium transition-all duration-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 ${
                   isActive('/categories') ? 'bg-gray-100 text-gray-900' : 'text-gray-900'
-                } hidden sm:inline`}
+                }`}
               >
                 分類
               </Link>
-              <FiGrid className="block sm:hidden text-2xl" />
+              <Link to="/Categories" className="block sm:hidden text-2xl">
+                <FiGrid />
+              </Link>
 
               <Link
                 to="/Wishlist"
-                className="inline-block px-2 py-1 text-sm font-medium transition-all duration-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 sm:inline"
+                className={`hidden sm:inline-block px-2 py-1 text-sm font-medium transition-all duration-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 ${
+                  isActive('/wishlist') ? 'bg-gray-100 text-gray-900' : 'text-gray-900'
+                }`}
               >
                 許願
               </Link>
-              <FiHeart className="block sm:hidden text-2xl" />
+              <Link to="/Wishlist" className="block sm:hidden text-2xl">
+                <FiHeart />
+              </Link>
             </div>
           </div>
         </div>
