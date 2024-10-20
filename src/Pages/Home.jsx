@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ReactPlayer from "react-player";
 
 const Home = () => {
   const [songs, setSongs] = useState([]);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -28,7 +30,7 @@ const Home = () => {
 
   return (
     <main className="flex-grow">
-   <section className="relative bg-blue-600 text-white py-20 px-6 md:py-32">
+      <section className="relative bg-blue-600 text-white py-20 px-6 md:py-32">
         <div className="max-w-screen-md mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: -30 }}
@@ -37,7 +39,7 @@ const Home = () => {
             className="px-6 py-12 text-center bg-gradient-to-b from-blue-100 to-white rounded-lg shadow-lg md:py-16 md:px-12"
           >
             <h1 className="text-3xl font-extrabold mb-6 text-gray-800 md:text-5xl">
-               歡迎來到 KX Lyrics
+              歡迎來到 KX Lyrics
             </h1>
             <div className="text-left md:max-w-2xl md:mx-auto">
               <motion.div
@@ -100,7 +102,15 @@ const Home = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {songs.slice(0, 3).map((song, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
+                <motion.div
+                  key={index}
+                  className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
+                  initial={{ opacity: 0, y: 20 }} 
+                  animate={{ opacity: 1, y: 0 }} 
+                  transition={{ duration: 0.5, delay: index * 0.2 }} 
+                  whileHover={{ scale: 1.1 }} 
+                  onClick={() => navigate('/LyricsStudy', { state: { songData: song } })}
+                >
                   <h3 className="text-xl font-semibold mb-4">{song.title}</h3>
                   <p className="text-gray-700">{song.artist}</p>
                   <ReactPlayer
@@ -109,13 +119,12 @@ const Home = () => {
                     height="250px"
                     controls
                   />
-                </div>
+                </motion.div>
               ))}
             </div>
           )}
         </div>
       </section>
-
     </main>
   );
 };
