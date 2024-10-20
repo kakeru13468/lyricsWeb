@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { FiHome, FiSearch, FiHeart, FiGrid } from 'react-icons/fi'; // 引入所需圖示
 import Error from '../Error/Error';
 
 const Navbar = () => {
@@ -53,7 +54,7 @@ const Navbar = () => {
   const handleSearch = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/songs?title=${encodeURIComponent(searchTerm)}`
+        `https://songdata.zeabur.app/songs?title=${encodeURIComponent(searchTerm)}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -99,18 +100,20 @@ const Navbar = () => {
                 to="/"
                 className={`inline-block px-2 py-1 text-sm font-medium transition-all duration-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 ${
                   isActive('/') ? 'bg-gray-100 text-gray-900' : 'text-gray-900'
-                }`}
+                } hidden sm:inline`}
               >
                 首頁
               </Link>
+              <FiHome className="block sm:hidden text-2xl" />
 
               <div className="relative inline-block" ref={searchBoxRef}>
                 <button
                   onClick={toggleSearchBox}
-                  className="inline-block px-2 py-1 text-sm font-medium text-gray-900 rounded-lg hover:bg-gray-100 hover:text-gray-900"
+                  className="inline-block px-2 py-1 text-sm font-medium text-gray-900 rounded-lg hover:bg-gray-100 hover:text-gray-900 hidden sm:inline"
                 >
                   搜尋
                 </button>
+                <FiSearch className="block sm:hidden text-2xl" />
 
                 {isSearchVisible && (
                   <motion.div
@@ -140,16 +143,19 @@ const Navbar = () => {
                 to="/Categories"
                 className={`inline-block px-2 py-1 text-sm font-medium transition-all duration-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 ${
                   isActive('/categories') ? 'bg-gray-100 text-gray-900' : 'text-gray-900'
-                }`}
+                } hidden sm:inline`}
               >
                 分類
               </Link>
+              <FiGrid className="block sm:hidden text-2xl" />
+
               <Link
                 to="/Wishlist"
-                className="inline-block px-2 py-1 text-sm font-medium transition-all duration-200 rounded-lg hover:bg-gray-100 hover:text-gray-900"
+                className="inline-block px-2 py-1 text-sm font-medium transition-all duration-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 hidden sm:inline"
               >
                 許願
               </Link>
+              <FiHeart className="block sm:hidden text-2xl" />
             </div>
           </div>
         </div>
