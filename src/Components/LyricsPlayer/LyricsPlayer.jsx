@@ -95,6 +95,7 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
           ))}
         </div>
       </motion.div>
+      
     </motion.div>
   );
 };

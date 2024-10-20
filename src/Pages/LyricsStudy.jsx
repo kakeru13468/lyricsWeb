@@ -16,10 +16,11 @@ const LyricsStudy = () => {
     const songAuthor = songData.artist;
     const videoURL = songData.url;
     const lyricsData = songData.lyrics;
+    const lyricssource = songData.lyricssource;
 
     return (
         <>
-        <SongInfo songName={songName} songAuthor={songAuthor}/>
+        <SongInfo songName={songName} songAuthor={songAuthor} lyricssource={lyricssource}/>
         <LyricsPlayer videoUrl={videoURL} lyricsData={lyricsData} />
         </>
     );

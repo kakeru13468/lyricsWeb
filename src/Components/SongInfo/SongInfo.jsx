@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const SongInfo = ({ songName, songAuthor }) => {
+const SongInfo = ({ songName, songAuthor, lyricssource}) => {
   return (
     <motion.div
       className="flex flex-col items-center justify-center gap-2 p-8 mt-24 bg-white shadow-lg rounded-lg"
@@ -26,6 +26,15 @@ const SongInfo = ({ songName, songAuthor }) => {
       >
         作者: <span >{songAuthor}</span>
       </motion.p>
+      <motion.p
+        className="text-xl font-medium text-gray-600"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        歌詞出處: <span >{lyricssource}</span>
+      </motion.p>
+      
     </motion.div>
   );
 };

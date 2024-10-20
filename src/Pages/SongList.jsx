@@ -7,6 +7,7 @@ const SongList = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    
     const location = useLocation();
     const navigate = useNavigate();
     const { songData } = location.state || {}; 
@@ -40,6 +41,7 @@ const SongList = () => {
                         height='200px' 
                         onClick={(e) => e.stopPropagation()} 
                     />
+                   
                 </motion.div>
             ))}
         </div>

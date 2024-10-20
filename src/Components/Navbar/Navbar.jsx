@@ -151,7 +151,7 @@ const Navbar = () => {
 
               <Link
                 to="/Wishlist"
-                className="inline-block px-2 py-1 text-sm font-medium transition-all duration-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 hidden sm:inline"
+                className="inline-block px-2 py-1 text-sm font-medium transition-all duration-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 sm:inline"
               >
                 許願
               </Link>
