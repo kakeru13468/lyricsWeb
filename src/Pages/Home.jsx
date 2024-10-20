@@ -90,25 +90,6 @@ const Home = () => {
         </div>
       </section>
 
-      
-      {/* 更新日誌區塊 */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-screen-lg mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            更新日誌
-          </h2>
-          <div className="space-y-6">
-            <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold mb-2">版本 1.0.0</h3>
-              <ul className="list-disc list-inside text-gray-700">
-                <li>初版上線，提供歌曲搜尋與播放功能。</li>
-                <li>支援留言與歌曲許願功能。</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section id="daily-recommendations" className="py-16 px-6 bg-gray-100">
         <div className="max-w-screen-lg mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
@@ -118,7 +99,7 @@ const Home = () => {
             <p className="text-center text-red-500">{error}</p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {songs.map((song, index) => (
+              {songs.slice(0, 3).map((song, index) => (
                 <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
                   <h3 className="text-xl font-semibold mb-4">{song.title}</h3>
                   <p className="text-gray-700">{song.artist}</p>
