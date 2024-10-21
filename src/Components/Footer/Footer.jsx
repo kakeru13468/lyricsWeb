@@ -16,7 +16,7 @@ const Footer = () => {
             <h3 className="text-gray-900 text-lg font-semibold mb-2">支持我們</h3>
             <p className="text-sm text-gray-700 mb-3">請我們喝杯咖啡。</p>
             <a 
-              href="/donate" 
+              href="https://buymeacoffee.com/auchergod3" 
               className="inline-block rounded-lg bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
             >
               Donate
