@@ -6,11 +6,13 @@ import ReactPlayer from "react-player";
 
 const Home = () => {
   const [songs, setSongs] = useState([]);
+  const [randomSongs, setRandomSongs] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
     const fetchSongs = async () => {
       try {
         const response = await axios.get("https://songdata.zeabur.app/songs");
@@ -23,6 +25,23 @@ const Home = () => {
 
     fetchSongs();
   }, []);
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem('randomSongsData'));
+    const today = new Date().toISOString().split('T')[0];
+
+    if (savedData && savedData.date === today) {
+      setRandomSongs(savedData.songs);
+    } else if (songs.length > 0) {
+      const selectedSongs = songs
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+      
+      localStorage.setItem('randomSongsData', JSON.stringify({ date: today, songs: selectedSongs }));
+
+      setRandomSongs(selectedSongs);
+    }
+  }, [songs]);
 
   const scrollToRecommendations = () => {
     window.scrollTo({ top: 650, behavior: "smooth" });
@@ -50,7 +69,7 @@ const Home = () => {
               >
                 <h2 className="text-2xl font-semibold mb-2 text-blue-600">🔍 搜尋功能：</h2>
                 <p className="text-gray-700">
-                  我們的搜尋系統目前僅支援根據**歌曲名稱**進行查找。未來將會持續更新搜尋引擎！
+                  我們的搜尋系統目前僅支援根據歌曲名稱進行查找。未來將會持續更新搜尋引擎！
                 </p>
               </motion.div>
 
@@ -73,13 +92,12 @@ const Home = () => {
               >
                 <h2 className="text-2xl font-semibold mb-2 text-yellow-600">☕ 支持我們：</h2>
                 <p className="text-gray-700">
-                  喜歡我們的服務嗎？點擊下方按鈕**贊助我們喝杯咖啡**，你的支持是我們持續前進的動力！
+                  喜歡我們的服務嗎？點擊下方按鈕贊助我們喝杯咖啡，你的支持是我們持續前進的動力！
                 </p>
               </motion.div>
             </div>
           </motion.div>
 
-          <p className="text-lg md:text-xl mb-6"></p>
           <motion.button
             onClick={scrollToRecommendations}
             initial={{ opacity: 0 }}
@@ -101,7 +119,7 @@ const Home = () => {
             <p className="text-center text-red-500">{error}</p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {songs.slice(0, 3).map((song, index) => (
+              {randomSongs.map((song, index) => (
                 <motion.div
                   key={index}
                   className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
