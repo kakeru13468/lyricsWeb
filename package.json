@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@applemusic-like-lyrics/react": "^0.1.5",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@pixi/app": "^7.4.2",
     "@pixi/core": "^7.4.2",
     "@pixi/display": "^7.4.2",
@@ -33,8 +35,10 @@
     "react-player": "^2.16.0",
     "react-redux": "^9.1.2",
     "react-router-dom": "^6.27.0",
+    "recharts": "^2.13.0",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
+    "swiper": "^11.1.14",
     "yarn": "^1.22.22"
   },
   "devDependencies": {

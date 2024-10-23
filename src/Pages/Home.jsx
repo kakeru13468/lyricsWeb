@@ -144,6 +144,41 @@ const Home = () => {
           )}
         </div>
       </section>
+
+      <section id="daily-recommendations" className="py-16 px-6 bg-gray-100">
+        <div className="max-w-screen-lg mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            熱門歌曲
+          </h2>
+          {error ? (
+            <p className="text-center text-red-500">{error}</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {songs.map((song, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
+                  initial={{ opacity: 0, y: 20 }} 
+                  animate={{ opacity: 1, y: 0 }} 
+                  transition={{ duration: 0.5}} 
+                  whileHover={{ scale: 1.1,transition: { duration: 0.2 ,type: "spring", stiffness: 400, damping: 10 }, }} 
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => navigate('/LyricsStudy', { state: { songData: song } })}
+                >
+                  <h3 className="text-xl font-semibold mb-4">{song.title}</h3>
+                  <p className="text-gray-700">{song.artist}</p>
+                  <ReactPlayer
+                    url={song.url}
+                    width="100%"
+                    height="250px"
+                    controls
+                  />
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
     </main>
   );
 };

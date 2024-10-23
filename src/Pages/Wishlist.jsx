@@ -50,7 +50,7 @@ const Wishlist = () => {
     <div className="max-w-md mx-auto mt-24 p-6 bg-white rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-4 text-center">許願表單</h2>
       <p className='text-l text-center'>
-      我們只會將您的個人資料用於回應「許願標單」。我們保證您的資料不會以任何形式被轉發以及出售。亦不會向您發送任何推廣、傳銷及請求任何費用。
+      我們只會將您的個人資料用於回應「許願表單」。我們保證您的資料不會以任何形式被轉發以及出售。亦不會向您發送任何推廣、傳銷及請求任何費用。
       </p>
       <form onSubmit={handleSubmit} className="space-y-4 mt-3">
         <div>
