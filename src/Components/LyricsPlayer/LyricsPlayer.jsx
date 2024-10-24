@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import { motion } from 'framer-motion';
+import { FaPlayCircle } from 'react-icons/fa'; 
 
 const convertTimeToSeconds = (timeString) => {
   const parts = timeString.split(/[:,]/);
@@ -71,7 +72,7 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
           {lyricsData.map((line, index) => (
             <motion.div
               key={index}
-              className="p-4 rounded-lg bg-white shadow-md cursor-pointer" 
+              className="p-4 rounded-lg bg-white shadow-md cursor-pointer flex items-center justify-between" 
               initial={{ scale: 1 }}
               animate={
                 index === currentIndex
@@ -81,16 +82,23 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
               transition={{ duration: 0.3 }}
               onClick={() => handleLyricsClick(line.time)} 
             >
-              <p
-                className={`text-xl font-medium transition-colors duration-300 ${
-                  index === currentIndex ? 'text-blue-600' : 'text-gray-800'
-                }`}
-              >
-                {line.text}
-              </p>
-              {line.cnText && (
-                <p className="text-lg font-light text-gray-600 mt-2">{line.cnText}</p>
-              )}
+              <div>
+                <p
+                  className={`text-xl text-left  font-medium transition-colors duration-300 ${
+                    index === currentIndex ? 'text-blue-600' : 'text-gray-800'
+                  }`}
+                >
+                  {line.text}
+                </p>
+                {line.cnText && (
+                  <p className="text-lg text-left font-light text-gray-600 mt-2">{line.cnText}</p>
+                )}
+              </div>
+              <FaPlayCircle
+                className={`text-2xl transition-colors duration-300 ${
+                  index === currentIndex ? 'text-blue-600' : 'text-gray-400'
+                }`} 
+              />
             </motion.div>
           ))}
         </div>

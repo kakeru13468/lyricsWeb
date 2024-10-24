@@ -154,7 +154,7 @@ const Home = () => {
             <p className="text-center text-red-500">{error}</p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {songs.map((song, index) => (
+              {songs.slice(0, 3).map((song, index) => (
                 <motion.div
                   key={index}
                   className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
