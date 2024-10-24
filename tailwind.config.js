@@ -10,7 +10,10 @@ export default {
       height: {
         '112':'32rem',
         '128': '38rem',
-      }
+      },
+      margin: {
+        'scroll': '20px', 
+      },
     },
   },
   plugins: [],

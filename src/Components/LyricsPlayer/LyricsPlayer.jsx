@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import { motion } from 'framer-motion';
-import { FaPlayCircle } from 'react-icons/fa'; 
+import { FaPlayCircle } from 'react-icons/fa';
 
 const convertTimeToSeconds = (timeString) => {
   const parts = timeString.split(/[:,]/);
@@ -14,8 +14,9 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
   }
 
   const [currentIndex, setCurrentIndex] = useState(-1);
-  const [playing, setPlaying] = useState(false); 
-  const playerRef = useRef(null); 
+  const [playing, setPlaying] = useState(false);
+  const playerRef = useRef(null);
+  const lyricsContainerRef = useRef(null); 
 
   const handleProgress = (progress) => {
     const currentTime = progress.playedSeconds;
@@ -28,13 +29,24 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
 
     if (index !== -1 && index !== currentIndex) {
       setCurrentIndex(index);
+      const lyricElement = document.getElementById(`lyric-${index}`);
+      if (lyricElement && lyricsContainerRef.current) {
+        const container = lyricsContainerRef.current;
+        const containerRect = container.getBoundingClientRect();
+        const lyricRect = lyricElement.getBoundingClientRect();
+
+        const offset = 20; 
+        const scrollPosition = lyricRect.top - containerRect.top + container.scrollTop - offset;
+
+        container.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+      }
     }
   };
 
   const handleLyricsClick = (time) => {
     const seconds = convertTimeToSeconds(time);
     playerRef.current.seekTo(seconds);
-    setPlaying(true); 
+    setPlaying(true);
   };
 
   return (
@@ -51,18 +63,19 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
         transition={{ duration: 0.6, ease: 'easeInOut' }}
       >
         <ReactPlayer
-          ref={playerRef} 
+          ref={playerRef}
           url={videoUrl}
           controls={true}
           width="100%"
           height="100%"
-          playing={playing} 
+          playing={playing}
           onProgress={handleProgress}
         />
       </motion.div>
 
       <motion.div
         className="w-full h-128 text-center bg-gray-100 p-6 rounded-lg shadow-lg overflow-y-auto"
+        ref={lyricsContainerRef} 
         initial={{ x: 50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.2, ease: 'easeInOut' }}
@@ -72,7 +85,8 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
           {lyricsData.map((line, index) => (
             <motion.div
               key={index}
-              className="p-4 rounded-lg bg-white shadow-md cursor-pointer flex items-center justify-between" 
+              id={`lyric-${index}`}  
+              className="p-4 rounded-lg bg-white shadow-md cursor-pointer flex items-center justify-between"
               initial={{ scale: 1 }}
               animate={
                 index === currentIndex
@@ -80,13 +94,12 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
                   : { scale: 1 }
               }
               transition={{ duration: 0.3 }}
-              onClick={() => handleLyricsClick(line.time)} 
+              onClick={() => handleLyricsClick(line.time)}
             >
               <div>
                 <p
-                  className={`text-xl text-left  font-medium transition-colors duration-300 ${
-                    index === currentIndex ? 'text-blue-600' : 'text-gray-800'
-                  }`}
+                  className={`text-xl text-left font-medium transition-colors duration-300 ${index === currentIndex ? 'text-blue-600' : 'text-gray-800'
+                    }`}
                 >
                   {line.text}
                 </p>
@@ -95,15 +108,13 @@ const LyricsPlayer = ({ videoUrl, lyricsData }) => {
                 )}
               </div>
               <FaPlayCircle
-                className={`text-2xl transition-colors duration-300 ${
-                  index === currentIndex ? 'text-blue-600' : 'text-gray-400'
-                }`} 
+                className={`text-2xl transition-colors duration-300 ${index === currentIndex ? 'text-blue-600' : 'text-gray-400'
+                  }`}
               />
             </motion.div>
           ))}
         </div>
       </motion.div>
-      
     </motion.div>
   );
 };
